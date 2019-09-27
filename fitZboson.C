@@ -1,15 +1,15 @@
-oid fitZboson(){
+void fitZboson(){
 
   TCanvas *c1 = new TCanvas("c1","");
   gStyle->SetOptStat(111111);
-  TString File = "DoubleMu.root";
+  TString File = "mass.root";
   TFile *f = new TFile(File.Data());
-  TH1F *h = (TH1F*) f->Get("demo/Zboson2");
+  TH1F *h = (TH1F*) f->Get("mass");
   //h->Draw();
   //c1->SaveAs("fitjpsi.pdf");
   // Create RooDataHist
 
-  RooRealVar mass_peak("m0","m0",90, 60,120);
+  RooRealVar mass_peak("m0","m0",90, 80,100);
   RooRealVar width("width","width",10, 0,100);
   RooRealVar a0("a0","",0,1000);
   RooRealVar x("x","",40,140);
@@ -26,6 +26,6 @@ oid fitZboson(){
   mass_data->plotOn(plot_frame);
   bwandpol.plotOn(plot_frame);
   plot_frame->Draw();
-
+   c1->SaveAs("fitjpsi.pdf");
   
 }
